@@ -12,7 +12,7 @@ from sklearn.metrics import r2_score
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
 from xgboost import XGBRegressor
-from sklearn.ensemble import GradientBoostingRegressor
+#from sklearn.ensemble import GradientBoostingRegressor
 
 
 from src.exception import CustomException
@@ -49,7 +49,11 @@ class ModelTrainer:
 
 
             }
+            
+            #logging.info("Starting model evaluation")
             model_report:dict=evaluate_models(X_train=X_train, y_train=y_train,X_test=X_test, y_test=y_test,models=models)
+
+            #logging.info("Model evaluation completed")
 
             ##To get best model score from dict
             best_model_score=max(sorted(model_report.values()))
@@ -75,4 +79,3 @@ class ModelTrainer:
         
         except Exception as e:
             raise CustomException(e,sys)
-            

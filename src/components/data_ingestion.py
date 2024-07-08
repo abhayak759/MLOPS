@@ -39,6 +39,7 @@ class DataIngestion:
                 self.ingestion_config.test_data_path
             )
         except Exception as e:
+            logging.error(f"Error occurred in data ingestion: {str(e)}")
             raise CustomException(e,sys)
 if __name__=="__main__":
     obj=DataIngestion()
